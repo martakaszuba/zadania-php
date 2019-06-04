@@ -1,7 +1,7 @@
 <?php
 // function frequentLetter counts the most frequent letter
-// letter("kot) => nie ma litery która występuje najczęściej
-// letter("kokos) => o
+// letter("kot") => nie ma litery która występuje najczęściej
+// letter("kara") => a
 
 function frequentLetter($str){
 $count = 0;
