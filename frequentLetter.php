@@ -1,32 +1,29 @@
 <?php
-// function frequentLetter counts the most frequent letter
-// letter("kot") => nie ma litery która występuje najczęściej
-// letter("kara") => a
+// function mostFrequentLetter counts the most frequent letter/letters
+// mostFrequentLetter("kot") => Nie ma litery która występuje najczęściej
+// mostFrequentLetter("kara") => Najczęściej występująca litera to:a
+// mostFrequentLetter("mama")= > Najczęściej występujące litery to:m,a
 
-function frequentLetter($str){
-$count = 0;
-$letter;
-$str = str_split($str);
+function mostFrequentLetter($str){
+$countLetter = array_count_values(str_split($str));
+$num = max(array_values($countLetter));
 $arr = [];
-for ($i=0; $i<count($str); $i++){
-    if (isset($arr[$str[$i]])){
-        $arr[$str[$i]] += 1;
-    }
-    else {
-        $arr[$str[$i]] = 1;
-    }
-}
-foreach ($arr as $key => $value){
-    if ($value > $count){
-        $count = $value;
-        $letter = $key;
-    }
-}
-if ($count === 1){
-    return "nie ma litery która występuje najczęściej";
+if ($num === 1){
+    echo "Nie ma litery która występuje najczęściej";
+    return;
 }
 else {
-    return $letter;
+    foreach ($countLetter as $key=>$value){
+        if ($value === $num){
+            array_push($arr, $key);
+        }
+    }
+}
+if (count($arr) === 1){
+    echo "Najczęściej występująca litera to:". implode(",", $arr);
+}
+else {
+    echo "Najczęściej występujące litery to:". implode(",", $arr);
 }
 }
 
